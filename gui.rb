@@ -22,7 +22,20 @@ class AutomationApp < FXMainWindow
 
     # Campos de entrada para Chave
     FXLabel.new(vframe, "Chave:")
-    key_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL)
+    key_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL | TEXTFIELD_PASSWD)
+
+    # Adiciona checkbox para visualizar ou ocultar valores dos campos Senha e Chave
+    FXCheckButton.new(vframe, "Mostrar Senha e Chave") do |checkbox|
+      checkbox.connect(SEL_COMMAND) do
+        if checkbox.checked?
+          password_field.textStyle &= ~TEXTFIELD_PASSWD
+          key_field.textStyle &= ~TEXTFIELD_PASSWD
+        else
+          password_field.textStyle |= TEXTFIELD_PASSWD
+          key_field.textStyle |= TEXTFIELD_PASSWD
+        end
+      end
+    end
 
     # Ajusta o botão para ficar ainda mais à esquerda, centralizado horizontalmente no espaço vazio
     spacer = FXHorizontalFrame.new(hframe, LAYOUT_FIX_WIDTH | LAYOUT_CENTER_Y, 0, 0, 50, 0, 0, 0, 0, 0)
