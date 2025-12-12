@@ -11,16 +11,16 @@ class AutomationApp < FXMainWindow
     # Layout principal ajustado para organizar os campos e o botão
     hframe = FXHorizontalFrame.new(frame, LAYOUT_FILL_X | LAYOUT_CENTER_Y)
 
-    # Campos de entrada Usuário
+    # Campo de entrada Usuário
     vframe = FXVerticalFrame.new(hframe, LAYOUT_FILL_Y | LAYOUT_LEFT)
     FXLabel.new(vframe, "Usuário:")
     user_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL)
 
-    # Campos de entrada Senha
+    # Campo de entrada Senha
     FXLabel.new(vframe, "Senha:")
     password_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL | TEXTFIELD_PASSWD)
 
-    # Campos de entrada para Chave
+    # Campo de entrada para Chave
     FXLabel.new(vframe, "Chave:")
     key_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL | TEXTFIELD_PASSWD)
 

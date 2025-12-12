@@ -1,5 +1,6 @@
 # Mapeamento de elementos
 ELEMENTS = {
-  text_field_example: { type: :text_field, value: '#twotabsearchtextbox' },
-  button_example: { type: :button, value: '#nav-search-submit-button' }
+  campo_username: { type: :text_field, value: "input[name='username']" },
+  campo_senha:    { type: :text_field, value: "input[id='password']" },
+  botao_entrar:   { type: :button, value: "#kc-login" }
   }

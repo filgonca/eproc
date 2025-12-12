@@ -3,7 +3,8 @@ require 'selenium-webdriver'
 class Base
   def initialize(driver)
     @driver = driver
-    @wait = Selenium::WebDriver::Wait.new(timeout: 15) # Espera de até 15 segundos
+    @wait = Selenium::WebDriver::Wait.new(timeout: 30) # Aumenta o tempo limite para 30 segundos
+    puts "Driver inicializado com sucesso."
   end
 
   def wait_for_page_load
