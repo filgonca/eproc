@@ -3,7 +3,7 @@ require 'selenium-webdriver'
 class Base
   def initialize(driver)
     @driver = driver
-    @wait = Selenium::WebDriver::Wait.new(timeout: 30) # Aumenta o tempo limite para 30 segundos
+    @wait = Selenium::WebDriver::Wait.new(timeout: 30)
     puts "Driver inicializado com sucesso."
   end
 
@@ -13,18 +13,6 @@ class Base
 
   def wait_for_element(selector)
     @wait.until { @driver.find_element(:css, selector).displayed? }
-  end
-
-  def handle_consent_popup
-    begin
-      consent_button = ELEMENTS[:consent_button]
-      if @driver.find_elements(:css, consent_button[:value]).any?
-        find_element(:consent_button).click
-        sleep 1 # Pequena espera para garantir que o pop-up desapareça
-      end
-    rescue Selenium::WebDriver::Error::NoSuchElementError
-      # Ignorar se o botão não estiver presente
-    end
   end
 
   def find_element(element)
