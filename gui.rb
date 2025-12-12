@@ -8,8 +8,27 @@ class AutomationApp < FXMainWindow
     # Layout principal
     frame = FXVerticalFrame.new(self, LAYOUT_FILL_X | LAYOUT_FILL_Y)
 
+    # Layout principal ajustado para organizar os campos e o botão
+    hframe = FXHorizontalFrame.new(frame, LAYOUT_FILL_X | LAYOUT_CENTER_Y)
+
+    # Campos de entrada Usuário
+    vframe = FXVerticalFrame.new(hframe, LAYOUT_FILL_Y | LAYOUT_LEFT)
+    FXLabel.new(vframe, "Usuário:")
+    user_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL)
+
+    # Campos de entrada Senha
+    FXLabel.new(vframe, "Senha:")
+    password_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL | TEXTFIELD_PASSWD)
+
+    # Campos de entrada para Chave
+    FXLabel.new(vframe, "Chave:")
+    key_field = FXTextField.new(vframe, 25, nil, 0, TEXTFIELD_NORMAL)
+
+    # Ajusta o botão para ficar ainda mais à esquerda, centralizado horizontalmente no espaço vazio
+    spacer = FXHorizontalFrame.new(hframe, LAYOUT_FIX_WIDTH | LAYOUT_CENTER_Y, 0, 0, 50, 0, 0, 0, 0, 0)
+
     # Botão para iniciar a automação
-    FXButton.new(frame, "Baixar Boletos", nil, nil, 0, FRAME_THICK | FRAME_RAISED | LAYOUT_CENTER_X | LAYOUT_CENTER_Y) do |button|
+    FXButton.new(hframe, "Baixar Boletos", nil, nil, 0, FRAME_THICK | FRAME_RAISED | LAYOUT_CENTER_Y) do |button|
       button.width = (button.width * 8).to_i
       button.height = (button.height * 8).to_i
       button.connect(SEL_COMMAND) do
